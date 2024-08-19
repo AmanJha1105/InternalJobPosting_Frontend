@@ -10,7 +10,6 @@ export class OpeningService {
   private apiUrl = 'http://localhost:8086/api/openings';
 
   constructor(private http: HttpClient) {}
-
   getOpenings(): Observable<Opening[]> {
     return this.http.get<Opening[]>(`${this.apiUrl}/all`);
   }
@@ -27,10 +26,10 @@ export class OpeningService {
   }
 
   updateOpening(id: number, opening: Opening): Observable<Opening> {
-    return this.http.put<Opening>(`${this.apiUrl}/update/${id}`, opening);
+    return this.http.patch<Opening>(`${this.apiUrl}/update/${id}`, opening);
   }
 
   deleteOpening(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

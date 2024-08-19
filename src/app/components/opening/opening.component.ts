@@ -41,9 +41,21 @@ export class OpeningComponent implements OnInit {
     this.router.navigate(['openings/add']);
   }
 
+  updateOpening(id:number){
+    this.router.navigate([`openings/update/${id}`]);
+  }
+
   deleteOpening(id: number) {
-    this.openingService.deleteOpening(id).subscribe(() => {
-      this.loadOpenings();
-    });
+    if (confirm('Are you sure you want to delete this opening?')) {
+      this.openingService.deleteOpening(id).subscribe({
+        next: () => {
+          this.openings = this.openings.filter(opening => opening.openingId !== id);
+        },
+        error: err => {
+          console.error('Failed to delete the opening:', err);
+          alert('Failed to delete the opening. Please try again later.');
+        }
+      });
+    }
   }
 }
