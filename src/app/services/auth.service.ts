@@ -6,9 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8083/api/employees';
-  private employeeDetails: any = null;
-
+  private apiUrl = 'http://localhost:8083/api/employee';
+  
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
@@ -23,19 +22,19 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/register`, data);
   }
 
-  setEmployeeDetails(details: any): void {
-    this.employeeDetails = details;
-  }
+  // setEmployeeDetails(details: any): void {
+  //   this.employeeDetails = details;
+  // }
 
-  getEmployeeDetails(): any {
-    return this.employeeDetails;
-  }
+  // getEmployeeDetails(): any {
+  //   return this.employeeDetails;
+  // }
 
-  isLoggedIn(): boolean {
-    return this.employeeDetails !== null;
-  }
+  // isLoggedIn(): boolean {
+  //   return this.employeeDetails !== null;
+  // }
 
-  logout(): void {
-    this.employeeDetails = null;
-  }
+  // logout(): void {
+  //   this.employeeDetails = null;
+  // }
 }
