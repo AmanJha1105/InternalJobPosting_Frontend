@@ -13,7 +13,9 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string | null = null;
-  isAdmin: String="Employee";
+  username: string = '';
+  password: string = '';
+  isAdmin: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -30,8 +32,13 @@ export class LoginComponent {
   onSubmit(): void {
     if (this.loginForm.valid) {
       const { username, password ,isAdmin} = this.loginForm.value;
-      this.authService.login(username, password,isAdmin).subscribe(
-        () => {
+      this.authService.login(username, password).subscribe(
+        (response) => {
+          this.authService.setEmployeeDetails(response);
+         console.log(response);
+          console.log("here here");
+          
+          
           localStorage.setItem('userRole', this.isAdmin ? 'HR' : 'Employee');
           this.router.navigate(['/openings']);
         },
