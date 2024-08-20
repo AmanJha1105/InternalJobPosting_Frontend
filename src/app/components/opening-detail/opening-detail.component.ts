@@ -18,6 +18,7 @@ import { AuthService } from '../../services/auth.service';
 export class OpeningDetailComponent implements OnInit {
   opening: Opening | null = null;
   employeeId: number|null = null;
+  router: any;
 
   constructor(private route: ActivatedRoute
     , private openingService: OpeningService,
@@ -27,9 +28,9 @@ export class OpeningDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const storedEmployeeId = localStorage.getItem("EmpID");
-    this.employeeId = storedEmployeeId ? Number(storedEmployeeId) : null;
-    console.log("employeeid on nginit is" , this.employeeId);
+    const employeeInfo = this.authService.getEmployeeInfo();
+    this.employeeId = employeeInfo?.empID || null; 
+    console.log("employeeId on ngInit is", this.employeeId);
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.openingService.getOpeningById(id).subscribe(data => {
       this.opening = data;
