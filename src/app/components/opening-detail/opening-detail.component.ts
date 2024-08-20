@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Opening } from '../opening/opening.model';
 import { Employee } from './Employee.model';
 import { OpeningService } from '../../services/OpeningService/opening.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -36,6 +36,11 @@ export class OpeningDetailComponent implements OnInit {
     });
     
   }
+  viewAppliedEmployees() {
+    if (this.opening && this.opening.openingId) {
+      this.router.navigate(['/applied-employees', this.opening.openingId]);
+    }
+  }
   apply(employeeId: number | null | undefined, openingId: number | null | undefined): void {
     console.log("e is" ,employeeId);
     console.log("o is " ,openingId);
@@ -66,4 +71,5 @@ export class OpeningDetailComponent implements OnInit {
       }
     });
   }
-  }
+}
+

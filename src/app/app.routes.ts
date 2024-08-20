@@ -5,6 +5,7 @@ import { OpeningComponent } from './components/opening/opening.component';
 import { OpeningDetailComponent } from './components/opening-detail/opening-detail.component';
 import { AddOpeningComponent } from './components/add-opening/add-opening.component';
 import { EditOpeningComponent } from './components/edit-opening/edit-opening.component';
+import { MyApplicationsComponent } from './components/my-applications/my-applications.component';
 
 
 export const routes: Routes = [
@@ -14,5 +15,6 @@ export const routes: Routes = [
   { path: 'opening/:id', component: OpeningDetailComponent },
   { path: 'openings/add', component: AddOpeningComponent },
   {path:'openings/update/:id' , component:EditOpeningComponent},
+  { path: 'my-applications', component: MyApplicationsComponent },
   { path: '**', redirectTo: 'register' } // Default route
 ];

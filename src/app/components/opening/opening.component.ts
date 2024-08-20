@@ -33,6 +33,10 @@ export class OpeningComponent implements OnInit {
     });
   }
 
+  navigateToMyApplications(): void {
+    this.router.navigate(['/my-applications']);
+  }
+
   viewOpening(id: number) {
     this.router.navigate([`/opening/${id}`]);
   }
