@@ -7,6 +7,10 @@
     <p><strong>Experience:</strong> {{ opening?.experience }}</p>
     <!-- <p><strong>Last Date To Apply :</strong> {{ opening?.lastDateToApply }}</p> -->
     
-    <button (click)="apply()" class="bg-green-500 text-white px-4 py-2 rounded mt-4">Apply</button>
+    <button 
+  (click)="apply(employeeId, opening.openingId)" 
+  class="bg-green-500 text-white px-4 py-2 rounded mt-4">
+  Apply
+</button>
   </div>
   

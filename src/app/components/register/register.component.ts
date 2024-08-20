@@ -29,6 +29,9 @@ export class RegisterComponent {
   onRegister() {
     if (this.registerForm.valid) {
       const formData = this.registerForm.value;
+      console.log(formData);
+      localStorage.setItem("EmpID",formData.empId);
+      console.log("empid isfrom localstroage",localStorage.getItem("EmpID"));
       this.authService.register(formData).subscribe(
         response => {
           this.registrationSuccess = 'Registration successful!';
