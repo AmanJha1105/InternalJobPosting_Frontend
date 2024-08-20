@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Opening } from '../opening/opening.model';
 import { OpeningService } from '../../services/OpeningService/opening.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -17,12 +17,17 @@ throw new Error('Method not implemented.');
 }
   opening: Opening | null = null;
 
-  constructor(private route: ActivatedRoute, private openingService: OpeningService) {}
+  constructor(private route: ActivatedRoute, private router: Router,private openingService: OpeningService) {}
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.openingService.getOpeningById(id).subscribe(data => {
       this.opening = data;
     });
+  }
+  viewAppliedEmployees() {
+    if (this.opening && this.opening.openingId) {
+      this.router.navigate(['/applied-employees', this.opening.openingId]);
+    }
   }
 }

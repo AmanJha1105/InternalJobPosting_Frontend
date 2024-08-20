@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8083/api/employee';
+  private apiUrl = 'http://localhost:8090/api/employees';
   
   constructor(private http: HttpClient) {}
 
@@ -22,19 +22,17 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/register`, data);
   }
 
-  // setEmployeeDetails(details: any): void {
-  //   this.employeeDetails = details;
-  // }
+  saveEmployeeInfo(employeeInfo: any): void {
+    localStorage.setItem('employeeInfo', JSON.stringify(employeeInfo));
+  }
 
-  // getEmployeeDetails(): any {
-  //   return this.employeeDetails;
-  // }
+  getEmployeeInfo(): any {
+    console.log("22");
+    
+    return JSON.parse(localStorage.getItem('employeeInfo') || '{}');
+  }
 
-  // isLoggedIn(): boolean {
-  //   return this.employeeDetails !== null;
-  // }
-
-  // logout(): void {
-  //   this.employeeDetails = null;
-  // }
+  clearEmployeeInfo(): void {
+    localStorage.removeItem('employeeInfo');
+  }
 }
