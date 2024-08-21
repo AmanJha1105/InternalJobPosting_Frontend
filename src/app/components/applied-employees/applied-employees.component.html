@@ -1,0 +1,23 @@
+<div class="applied-employees">
+    <h1>Employees Applied for Opening</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Application ID</th>
+          <th>Employee ID</th>
+          <th>Name</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{employee?.applicationId}}</td>
+          <td>{{ employee?.empId }}</td>
+          <td>{{ employee?.empName }}</td>
+          <td>{{ employee?.empRole }}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

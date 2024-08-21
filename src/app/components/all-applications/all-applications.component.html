@@ -1,0 +1,25 @@
+<div class="all-applications">
+    <h1>All Applications</h1>
+    <div *ngFor="let group of applications">
+      <h2>{{ group.openingTitle }}</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Application ID</th>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let application of group.applications" (click)="viewOpening(application.openingId)">
+            <td>{{ application.applicationId }}</td>
+            <td>{{ application.empId }}</td>
+            <td>{{ application.empName }}</td>
+            <td>{{ application.empRole }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

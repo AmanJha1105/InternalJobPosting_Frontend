@@ -61,8 +61,14 @@ export class OpeningDetailComponent implements OnInit {
     }
   
     this.applicationService.apply(employeeId, openingId).subscribe({
-      next: () => {
-        this.snackBar.open('Successfully applied!', 'Close', {
+      next: (response: string) => {
+        let message = 'Successfully applied!';
+        
+        if (typeof response === 'string') {
+          message = response;
+        }
+    
+        this.snackBar.open(message, 'Close', {
           duration: 3000,
           verticalPosition: 'top',
           horizontalPosition: 'center',

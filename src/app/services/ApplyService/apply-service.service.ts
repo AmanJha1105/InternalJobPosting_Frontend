@@ -11,6 +11,7 @@ export class ApplyServiceService {
   constructor(private http: HttpClient) { }
 
   apply(employeeId: number, openingId: number): Observable<any> {
+
     return this.http.post(`${this.apiUrl}/${employeeId}/apply/${openingId}`,{},{responseType : "text"});
   }
 }

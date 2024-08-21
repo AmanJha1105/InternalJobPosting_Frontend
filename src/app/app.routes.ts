@@ -6,6 +6,8 @@ import { OpeningDetailComponent } from './components/opening-detail/opening-deta
 import { AddOpeningComponent } from './components/add-opening/add-opening.component';
 import { EditOpeningComponent } from './components/edit-opening/edit-opening.component';
 import { MyApplicationsComponent } from './components/my-applications/my-applications.component';
+import { AppliedEmployeesComponent } from './components/applied-employees/applied-employees.component';
+import { AllApplicationsComponent } from './components/all-applications/all-applications.component';
 import { HrDashboardComponent } from './components/hr-dashboard/hr-dashboard.component';
 
 
@@ -17,6 +19,8 @@ export const routes: Routes = [
   { path: 'openings/add', component: AddOpeningComponent },
   {path:'openings/update/:id' , component:EditOpeningComponent},
   { path: 'my-applications', component: MyApplicationsComponent },
-  {path:"applied-employees/:id", component:HrDashboardComponent},
-  { path: '**', redirectTo: 'register' } // Default route
+  { path: 'applied-employees/:id', component: AppliedEmployeesComponent },
+  { path: 'all-applications', component: AllApplicationsComponent },
+  { path: '**', redirectTo: 'register' } 
+
 ];
