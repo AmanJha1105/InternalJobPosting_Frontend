@@ -62,4 +62,9 @@ export class OpeningComponent implements OnInit {
       });
     }
   }
+
+  viewAllApplications(): void {
+    this.router.navigate(['/all-applications']);
+  }
+
 }

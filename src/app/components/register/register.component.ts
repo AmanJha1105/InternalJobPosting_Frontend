@@ -20,7 +20,8 @@ export class RegisterComponent {
       empName: ['', Validators.required],
       empRole: ['Employee', Validators.required],
       empId: ['', Validators.required],
-      username: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       isAdmin: [false]
     });

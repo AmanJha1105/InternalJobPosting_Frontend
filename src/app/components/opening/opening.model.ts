@@ -1,6 +1,6 @@
 export interface Opening {
-    openingId: any;
-    jobId: any;
+    openingId: number;
+    jobId: number;
     title: string;
     description: string;
     location: string;
