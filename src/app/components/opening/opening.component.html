@@ -1,28 +1,43 @@
 <div class="container mx-auto p-4">
-    <h1 class="text-2xl  font-bold mb-4">Job Openings</h1>
-    
-    <div class="flex justify-evenly items-center">
-      <!-- for admin -->
-      <button *ngIf="isAdmin===true" (click)="addOpening()" class="bg-blue-500 text-white px-4 py-2 rounded mb-4">Add Opening</button>
-      <button *ngIf="isAdmin===false" (click)="addOpening()" ></button>
-    <button *ngIf="!isAdmin" (click)="navigateToMyApplications()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-4">
+  <h1 class="text-3xl font-bold mb-4">Job Openings</h1>
+  <div class="flex gap-3 items-center">
+    <!-- for admin -->
+    <button *ngIf="isAdmin" (click)="addOpening()" class="text-blue-900 border border-blue-900 px-2 py-2 rounded mt-2 bg-transparent hover:bg-blue-900 hover:text-white">
+      Add Opening
+    </button>
+    <!-- for non-admin -->
+    <button *ngif="!isAdmin" (click)="navigateToMyApplications()" class="text-blue-900 border border-blue-900 px-2 py-2 rounded mt-2 bg-transparent hover:bg-blue-900 hover:text-white">
       My Applications
     </button>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div *ngFor="let opening of openings" class="border p-4 rounded shadow-md">
-        <!-- <img src="/Edit.svg" class="w-6 h-8 mr-2"> -->
-         <!-- for admin -->
-        <img src="/Edit.svg" class="w-6 h-6 mr-2" *ngIf="isAdmin" (click)="updateOpening(opening.openingId)" >
-        <h2 class="text-lg font-medium text-[#285151]">{{ opening.title }}</h2>
-        <p>{{ opening.description }}</p>
-       <div class="flex m-auto">
-        <button (click)="viewOpening(opening.openingId)" class="bg-blue-500 text-white text-sm px-2 py-0.5 rounded mt-2">View Details</button>
+  </div>
+
+  <div class="flex flex-col gap-3 items-center w-full mt-5">
+    <div *ngFor="let opening of openings" class="flex gap-2 p-4 rounded shadow-custom-light w-full">
+      <div class="flex justify-between items-center w-full border-r pr-4 pl-5 border-gray-300">
+        <h2 class="text-xl font-semibold">{{ opening.title }}</h2>
+        <button (click)="viewOpening(opening.openingId)" class="text-blue-900 border border-blue-900 px-2 py-2 rounded mt-2 bg-transparent hover:bg-blue-900 hover:text-white">
+          View Details
+        </button>
+      </div>
+      
+      <div class="flex flex-col items-end">
         <!-- for admin -->
-        <img src ="/Delete.svg" *ngIf="isAdmin" (click)="deleteOpening(opening.openingId)" class=" px-4 py-2 rounded mt-2 ml-2">
-       </div>
+        <button *ngIf="isAdmin" (click)="updateOpening(opening.openingId)" class="rounded mt-2">
+          <!-- <i class="material-symbols-outlined"
+            style="font-weight: 200;">
+              edit
+            </i> -->
+            <img src="/Edit.svg" class="w-6 h-5">
+        </button>
+        <!-- for admin -->
+        <button *ngIf="isAdmin" (click)="deleteOpening(opening.openingId)" class="text-red rounded mt-2 ml-2">
+          <!-- <i class="material-symbols-outlined"
+            style="color: rgb(191, 0, 0); font-weight: 200;">
+              delete
+            </i> -->
+            <img src ="/Delete.svg" class="h-6 w-8">
+        </button>
       </div>
     </div>
-   
   </div>
-  
+</div>
