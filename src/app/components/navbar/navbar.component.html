@@ -1,8 +1,62 @@
+<div>
+  <nav class="w-full">
+    <div class="justify-between px-4 mx-auto lg:max-w-8xl md:items-center md:flex md:px-8">
+      <div>
+        <div class="flex items-center justify-between py-3 md:py-5 md:block">
+          <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+              <img src="/UKG_logo.svg" class="h-8" alt="UKG logo" />
+          </a>
+          <div class="md:hidden">
+            <button
+              class="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+              onClick={}
+            >
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class="flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0"
+        >
+        <!-- bg-[#4b8f8f] hover:bg-[#285151] -->
+          <ul class="items-center justify-center space-y-8 mb-3 md:flex md:space-x-6 md:space-y-0 ">
+            <li class="p-2 space-x-8 text-[#102b2b] h-10 text-xl rounded-md hover:text-[#285151] hover:font-bold">
+              <a (click)="navigateTo('/register')" class="cursor-pointer hover:underline">Register</a>
+              <a (click)="navigateTo('/login')" class="cursor-pointer hover:underline">Login</a>
+            </li>
+             
+            <li class="p-2 space-x-8">
+              <div class="relative">
+                <button
+                  type="button"
+                  class=""
+                  aria-expanded={isProfileOpen}
+                  onClick={handleProfileToggle}
+                >
+                  <span class="sr-only">Open user menu</span>
+                  <div
+                    
+                  >
+                  </div>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
 
-<nav class="bg-blue-500 p-4 text-white">
+
+<!-- <nav class="bg-blue-500 p-4 text-white">
     <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="/UKG_logo.svg" class="h-8" alt="UKG logo" />
+    </a>
       <a (click)="navigateTo('/register')" class="cursor-pointer hover:underline">Register</a>
       <a (click)="navigateTo('/login')" class="cursor-pointer hover:underline">Login</a>
     </div>
-  </nav>
+  </nav> -->
   

@@ -8,6 +8,7 @@ import { EditOpeningComponent } from './components/edit-opening/edit-opening.com
 import { MyApplicationsComponent } from './components/my-applications/my-applications.component';
 import { AppliedEmployeesComponent } from './components/applied-employees/applied-employees.component';
 import { AllApplicationsComponent } from './components/all-applications/all-applications.component';
+import { HrDashboardComponent } from './components/hr-dashboard/hr-dashboard.component';
 
 
 export const routes: Routes = [
@@ -21,4 +22,5 @@ export const routes: Routes = [
   { path: 'applied-employees/:id', component: AppliedEmployeesComponent },
   { path: 'all-applications', component: AllApplicationsComponent },
   { path: '**', redirectTo: 'register' } 
+
 ];

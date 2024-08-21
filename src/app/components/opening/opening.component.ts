@@ -3,7 +3,7 @@ import { Opening } from './opening.model';
 import { OpeningService } from '../../services/OpeningService/opening.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-opening',
   standalone: true,
@@ -13,13 +13,18 @@ import { CommonModule } from '@angular/common';
 })
 export class OpeningComponent implements OnInit {
   openings: Opening[] = [];
-  isAdmin: boolean = true;
+  isAdmin: boolean = false;
 
-  constructor(private openingService: OpeningService, private router: Router) {}
+  constructor(private openingService: OpeningService,
+     private router: Router,
+     private authService : AuthService) {}
 
   ngOnInit(): void {
     this.checkUserRole();
     this.loadOpenings();
+    const employeeInfo = this.authService.getEmployeeInfo();
+    this.isAdmin = employeeInfo?.isAdmin || null; 
+    console.log("isAdmin on ngInit is", this.isAdmin);
   }
 
   checkUserRole() {

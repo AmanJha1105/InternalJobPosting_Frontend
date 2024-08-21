@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Opening } from '../opening/opening.model';
 import { Employee } from './Employee.model';
 import { OpeningService } from '../../services/OpeningService/opening.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ApplyServiceService } from '../../services/ApplyService/apply-service.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-opening-detail',
   standalone: true,
@@ -18,18 +19,19 @@ import { AuthService } from '../../services/auth.service';
 export class OpeningDetailComponent implements OnInit {
   opening: Opening | null = null;
   employeeId: number|null = null;
-  router: any;
-
+  isAdmin: boolean = false;
   constructor(private route: ActivatedRoute
     , private openingService: OpeningService,
     private applicationService: ApplyServiceService,
     private snackBar : MatSnackBar,
-    private authService : AuthService
+    private authService : AuthService,
+    private router : Router,
   ) {}
 
   ngOnInit(): void {
     const employeeInfo = this.authService.getEmployeeInfo();
     this.employeeId = employeeInfo?.empID || null; 
+    this.isAdmin = employeeInfo?.isAdmin || null; 
     console.log("employeeId on ngInit is", this.employeeId);
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.openingService.getOpeningById(id).subscribe(data => {
@@ -38,8 +40,12 @@ export class OpeningDetailComponent implements OnInit {
     
   }
   viewAppliedEmployees() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log("entering applied employees",id);
     if (this.opening && this.opening.openingId) {
-      this.router.navigate(['/applied-employees', this.opening.openingId]);
+      console.log("entered into applied emplyoess")
+      console.log("this.opening.openingId is" , this.opening.openingId);
+      this.router.navigate([`/applied-employees/${id}`]);
     }
   }
   apply(employeeId: number | null | undefined, openingId: number | null | undefined): void {

@@ -18,7 +18,7 @@ export class MyApplicationsComponent implements OnInit {
 
   ngOnInit(): void {
     const employeeInfo = this.authService.getEmployeeInfo();
-    console.log(employeeInfo.empID);
+    console.log("empid is applications 1",employeeInfo.empID);
     
     if (employeeInfo.empID===null) {
       console.log("11");
@@ -26,11 +26,9 @@ export class MyApplicationsComponent implements OnInit {
       this.router.navigate(['/login']);
       return;
     }
-
     this.http.get<any[]>(`http://localhost:8090/api/applications/employee/${employeeInfo.empID}`)
       .subscribe(data => {
         console.log(data);
-        
         this.applications = data;
       });
   }
