@@ -1,5 +1,5 @@
 <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">My Applications</h1>
+    <h1 class="text-2xl font-regular mb-4 text-[#1d6767]">My Applications</h1>
     <table class="min-w-full bg-white border border-gray-200">
       <thead>
         <tr>
@@ -12,14 +12,15 @@
       </thead>
       <tbody>
         <tr *ngFor="let app of applications">
-          <td class="py-2 px-4 border-b">{{ app.openingId }}</td>
+          <td class="py-2 px-4 border-b">{{ app.openingId}}</td>
           <td class="py-2 px-4 border-b">{{ app.title }}</td>
           <td class="py-2 px-4 border-b">{{ app.description }}</td>
           <td class="py-2 px-4 border-b">{{ app.location }}</td>
           <td class="py-2 px-4 border-b">
-            <button (click)="viewOpeningDetails(app.openingId)" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
+            <!-- <button (click)="viewOpeningDetails(app.openingId)" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
               View Details
-            </button>
+            </button> -->
+            pending
           </td>
         </tr>
       </tbody>
